@@ -2,7 +2,7 @@
 name = "movielens_analysis"
 version = "0.1.0"
 description = ""
-authors = ["Rael Williamson <rael.williamson@mesh-ai.com>"]
+authors = ["Rael Williamson <rael.williamson@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
