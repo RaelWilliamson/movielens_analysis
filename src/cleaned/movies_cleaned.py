@@ -1,9 +1,14 @@
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 from pyspark.sql import SparkSession
 import sys
+import logging
 
 sys.path.append("..")
 from src.modules.helpers import read_config
+
+# Set up logging configurations
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -18,6 +23,8 @@ def main():
         config = read_config(sys.argv[1])
         raw_path = config["raw_path"]
         cleaned_path = config["cleaned_path"]
+
+        logger.info("Cleaning movie data...")
 
         # Define Movies Schema
         movies_schema = StructType(
@@ -36,19 +43,27 @@ def main():
             .load(f"{raw_path}/movies.dat")
         )
 
+        logger.info(
+            f"Writing results to datalake at {cleaned_path}/movies_cleaned.parquet"
+        )
+
         # Write out the dataframe to the cleaned location in Parquet format
         movies_df.write.mode("overwrite").parquet(
             f"{cleaned_path}/movies_cleaned.parquet"
         )
 
+        logger.info(f"Writen {movies_df.count()} rows as output")
+
+        logger.info("Movie data cleaning completed.")
+
     except IndexError:
-        print("Please provide the path to the config file.")
+        logger.error("Please provide the path to the config file.")
         sys.exit(1)
     except KeyError as e:
-        print(f"Missing key in config file: {e}")
+        logger.error(f"Missing key in config file: {e}")
         sys.exit(1)
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logger.error(f"An error occurred: {e}")
         sys.exit(1)
     finally:
         spark.stop()

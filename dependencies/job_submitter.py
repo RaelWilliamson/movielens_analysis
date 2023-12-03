@@ -1,7 +1,12 @@
 import subprocess
 import typer
+import logging
+
+# Set up logging configurations
+logging.basicConfig(level=logging.INFO)  # Set the logging level to INFO
 
 app = typer.Typer()
+logger = logging.getLogger(__name__)  # Create a logger for this module
 
 
 def execute_pyspark_script(script_name: str, config_path: str, env: str):
@@ -14,11 +19,11 @@ def execute_pyspark_script(script_name: str, config_path: str, env: str):
     - env (str): Environment flag, "local" or "cluster".
     """
     if env == "cluster":
-        typer.echo("Submitting job to cluster")
+        logger.info("Submitting job to cluster")
         # Formulate the command to submit job to a Spark cluster
-        command = f"spark-submit --master spark://spark-master:7077 --deploy-mode client {script_name} {config_path}"
+        command = f"docker exec da-spark-master spark-submit --master spark://spark-master:7077 --deploy-mode client {script_name} {config_path}"
     else:
-        typer.echo("Running job locally")
+        logger.info("Running job locally")
         # Formulate the command to run job locally
         command = f"spark-submit --master local[*] {script_name} {config_path}"
 
@@ -40,6 +45,9 @@ def main(
     - config (str): Path to the configuration file.
     - script (str): Name of the PySpark script to execute.
     """
+    logger.info(
+        f"Executing script: {script} with config: {config} in environment: {env}"
+    )
     execute_pyspark_script(script, config, env)
 
 
