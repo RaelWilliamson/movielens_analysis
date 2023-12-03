@@ -94,7 +94,7 @@ def main():
         )
 
         # Write out the dataframe to the lake transformed location
-        movies_with_ratings.write.mode("overwrite").parquet(
+        movies_with_ratings.coalesce(1).write.mode("overwrite").parquet(
             f"{transformed_path}/movies_statistics.parquet"
         )
 
