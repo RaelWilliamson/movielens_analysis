@@ -1,0 +1,5 @@
+{
+    "raw_path": "/home/raelwilliamson/personal/movielens_analysis/data/raw/",
+    "cleaned_path": "/home/raelwilliamson/personal/movielens_analysis/data/cleaned/",
+    "transformed_path": "/home/raelwilliamson/personal/movielens_analysis/data/transformed/"
+}

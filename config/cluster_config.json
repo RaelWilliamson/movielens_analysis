@@ -1,0 +1,5 @@
+{
+    "raw_path": "/opt/spark/datalake/raw/",
+    "cleaned_path": "/opt/spark/datalake/cleaned/",
+    "transformed_path": "/opt/spark/datalake/transformed"
+}
