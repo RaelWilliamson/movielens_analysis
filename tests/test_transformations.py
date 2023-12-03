@@ -1,5 +1,5 @@
-from src.transformed.question_2 import summarise_ratings
-from src.transformed.question_3 import find_top_three_movies
+from src.transformed.movies_statistics import summarise_ratings
+from src.transformed.users_top_three_movies import find_top_three_movies
 
 
 def test_summarise_ratings(sample_ratings_data_averages):

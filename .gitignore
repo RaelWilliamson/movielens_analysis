@@ -71,4 +71,5 @@ target/
 .venv
 
 # Ignore data file
-data/
+data/cleaned
+data/transformed

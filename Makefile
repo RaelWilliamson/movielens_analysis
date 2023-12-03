@@ -29,27 +29,24 @@ run-ratings-clean-local:
 	$(ROOT_PATH)/config/local_config.json \
 	$(ROOT_PATH)/src/cleaned/ratings_cleaned.py
 
-run-question-2-local:
+run-movies-statistics-local:
 	cd dependencies && \
 	python job_submitter.py \
 	local \
 	$(ROOT_PATH)/config/local_config.json \
-	$(ROOT_PATH)/src/transformed/question_2.py
+	$(ROOT_PATH)/src/transformed/movies_statistics.py
 
-run-question-3-local:
+run-users-top-three-movies-local:
 	cd dependencies && \
 	python job_submitter.py \
 	local \
 	$(ROOT_PATH)/config/local_config.json \
-	$(ROOT_PATH)/src/transformed/question_3.py
+	$(ROOT_PATH)/src/transformed/users_top_three_movies.py
 
-run-pipeline-question_2:
+run-pipeline-local:
 	make run-movies-clean-local && \
 	make run-ratings-clean-local && \
-	make run-question-2-local
-
-run-pipeline-question_3:
-	make run-movies-clean-local && \
-	make run-ratings-clean-local && \
-	make run-question-3-local
+	make run-movies-statistics-local && \
+	make run-users-top-three-movies-local
+	
 
