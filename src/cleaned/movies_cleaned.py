@@ -48,9 +48,7 @@ def main():
         )
 
         # Write out the dataframe to the cleaned location in Parquet format
-        movies_df.write.mode("overwrite").parquet(
-            f"{cleaned_path}/movies_cleaned.parquet"
-        )
+        movies_df.write.mode("overwrite").format("parquet").save(f"{cleaned_path}/movies_cleaned.parquet")
 
         logger.info(f"Writen {movies_df.count()} rows as output")
 

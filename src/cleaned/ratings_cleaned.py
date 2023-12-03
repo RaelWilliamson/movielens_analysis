@@ -55,9 +55,7 @@ def main():
         )
 
         # Write out the dataframe to the cleaned location in Parquet format
-        ratings_df.write.mode("overwrite").parquet(
-            f"{cleaned_path}/ratings_cleaned.parquet"
-        )
+        ratings_df.write.mode("overwrite").format("parquet").save(f"{cleaned_path}/ratings_cleaned.parquet")
 
         logger.info(f"Writen {ratings_df.count()} rows as output")
 

@@ -76,8 +76,8 @@ def main():
             .load(f"{cleaned_path}/ratings_cleaned.parquet")
         )
 
-        logger.info(f'Read {movies_cleaned_df.count()} rows from movies data')
-        logger.info(f'Read {ratings_cleaned_df.count()} rows from ratings data')
+        logger.info(f"Read {movies_cleaned_df.count()} rows from movies data")
+        logger.info(f"Read {ratings_cleaned_df.count()} rows from ratings data")
 
         # Get summarised ratings data
         logger.info("Generating movie summary statistics")

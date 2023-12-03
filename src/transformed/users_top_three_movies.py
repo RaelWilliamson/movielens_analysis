@@ -74,8 +74,8 @@ def main():
             .load(f"{cleaned_path}/ratings_cleaned.parquet")
         )
 
-        logger.info(f'Read {movies_cleaned_df.count()} rows from movies data')
-        logger.info(f'Read {ratings_cleaned_df.count()} rows from ratings data')
+        logger.info(f"Read {movies_cleaned_df.count()} rows from movies data")
+        logger.info(f"Read {ratings_cleaned_df.count()} rows from ratings data")
 
         # Create DataFrame with top 3 movies per user
         logger.info("Finding top three movies")
