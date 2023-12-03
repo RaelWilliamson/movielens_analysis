@@ -20,6 +20,7 @@ Getting started:
 
 ​``` 
 Poetry Shell
+
 Poetry Install
 ​```
 ## Standing up a spark cluster using docker (if not running code locally)
@@ -30,7 +31,8 @@ Navigate to the infra folder using ` cd infra` and run the following commands:
 
 ​``` 
 make build
-nake run
+
+make run
 ​```
 
 Once the above has been completed you should be able to see the docker containers running.
