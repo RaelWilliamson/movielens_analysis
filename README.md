@@ -113,6 +113,9 @@ There are several commands used for easier development.
  - Cleaning "data lake" files: ` make clean-lake-data`
  - Unit testing: ` make run-all-tests`
 
+# Notes
 
+At present, the cluster mode is running in client. In addition the spark cluster is in standalone mode. Thus, there is no underlying DFS and as a result, the spark cluster is just a way to demostrate submitting a job to cluster vs running the code locally. 
 
+Please use the local mode if you would to inspect the outputs of the pipeline or run the data viz code.
 
