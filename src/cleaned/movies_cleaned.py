@@ -4,7 +4,8 @@ import sys
 import logging
 
 sys.path.append("..")
-from src.modules.helpers import read_config
+from modules.helpers import read_config
+
 
 # Set up logging configurations
 logging.basicConfig(level=logging.INFO)

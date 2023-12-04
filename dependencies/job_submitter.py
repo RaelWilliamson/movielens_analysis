@@ -21,7 +21,7 @@ def execute_pyspark_script(script_name: str, config_path: str, env: str):
     if env == "cluster":
         logger.info("Submitting job to cluster")
         # Formulate the command to submit job to a Spark cluster
-        command = f"docker exec da-spark-master spark-submit --master spark://spark-master:7077 --deploy-mode client {script_name} {config_path}"
+        command = f"docker exec da-spark-yarn-master spark-submit --master yarn --deploy-mode cluster {script_name} {config_path}"
     else:
         logger.info("Running job locally")
         # Formulate the command to run job locally

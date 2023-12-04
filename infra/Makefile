@@ -1,14 +1,14 @@
-build:
-	docker-compose build
+build-yarn:
+	docker-compose -f docker-compose.yml build
 
-down:
-	docker-compose down --volumes --remove-orphans
+down-yarn:
+	docker-compose -f docker-compose.yml down --volumes --remove-orphans
 
-run:
-	make down && docker-compose up
+run-yarn:
+	make down-yarn && docker-compose -f docker-compose.yml up
 
-run-scaled:
-	make down && docker-compose up --scale spark-worker=3
+run-yarn-scaled:
+	make down-yarn && docker-compose -f docker-compose.yml up --scale spark-yarn-worker=3
 
-stop:
-	docker-compose stop
+submit-yarn-test:
+	docker exec da-spark-yarn-master spark-submit --master yarn --deploy-mode cluster ./examples/src/main/python/pi.py
